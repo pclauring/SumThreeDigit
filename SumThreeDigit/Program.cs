@@ -10,12 +10,18 @@ namespace SumThreeDigit
             bool correctint = true;
             Console.WriteLine("Please enter your first positive three digit integer for comparison");
 
-            // need to create method for valueForCompare int - redundant code
-                valueForCompare1 = Convert.ToInt32(Console.ReadLine());
+            //while loop with TryParse to find a value that can be converted into an int
+            valueForCompare1 = 0;
+            while (!int.TryParse(Console.ReadLine(), out valueForCompare1))
+            {
+                Console.WriteLine("The value could not be converted to an int!");
+                Console.WriteLine("Please enter a valid integer");
+            }
+
             // Loop for verifying correctly inputted variable of the first loop
             while (correctint)
             {
-                if (valueForCompare1 >= 1 && valueForCompare1 <= 999)
+                if (valueForCompare1 >= 100 && valueForCompare1 <= 999)
                 {
                     correctint = false;
                     Console.WriteLine("Value accepted!");
@@ -36,11 +42,17 @@ namespace SumThreeDigit
 
             correctint = true;
 
-            valueForCompare2 = Convert.ToInt32(Console.ReadLine());
+            //while loop with TryParse to find a value that can be converted into an int
+            valueForCompare2 = 0;
+            while (!int.TryParse(Console.ReadLine(), out valueForCompare2))
+            {
+                Console.WriteLine("The value could not be converted to an int!");
+                Console.WriteLine("Please enter a valid integer");
+            }
 
             while (correctint)
             {
-                if (valueForCompare2 >= 1 && valueForCompare2 <= 999)
+                if (valueForCompare2 >= 100 && valueForCompare2 <= 999)
                 {
                     correctint = false;
                     Console.WriteLine("Value accepted!");
@@ -63,11 +75,8 @@ namespace SumThreeDigit
                 int hundredsPlaceSecondValue = LocationOfDigit(valueForCompare2, 100);
 
                 //tests for correct digit selection
-                Console.WriteLine("The console found the three digits in the first value to be {0}, {1}, and {2}", onesPlaceFirstValue, tensPlaceFirstValue, hundredsPlaceFirstValue );
-                Console.WriteLine("The console found the three digits in the second value to be {0}, {1}, and {2}", onesPlaceSecondValue, tensPlaceSecondValue, hundredsPlaceSecondValue);
-                //Console.WriteLine(onesPlaceSecondValue);
-                //Console.WriteLine(tensPlaceSecondValue);
-                //Console.WriteLine(hundredsPlaceSecondValue);
+                Console.WriteLine("The console found the three digits in the first value to be {2}, {1}, and {0}", onesPlaceFirstValue, tensPlaceFirstValue, hundredsPlaceFirstValue);
+                Console.WriteLine("The console found the three digits in the second value to be {2}, {1}, and {0}", onesPlaceSecondValue, tensPlaceSecondValue, hundredsPlaceSecondValue);
 
                 int totalfirstdigit = onesPlaceFirstValue + onesPlaceSecondValue;
                 int totalseconddigit = tensPlaceFirstValue + tensPlaceSecondValue;
@@ -77,7 +86,7 @@ namespace SumThreeDigit
 
             }
         }
-        public static void SumComparison(int x, int y,int z)
+        public static void SumComparison(int x, int y, int z)
         {
             bool sumsAreEqual;
             if (x == y && y == z)
