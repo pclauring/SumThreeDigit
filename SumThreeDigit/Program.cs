@@ -11,17 +11,7 @@ namespace SumThreeDigit
             Console.WriteLine("Please enter your first positive three digit integer for comparison");
 
             // need to create method for valueForCompare int - redundant code
-            // for string entry into ReadLine still only handles first exception
-            try
-            {
                 valueForCompare1 = Convert.ToInt32(Console.ReadLine());
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Invalid Entry. Please enter a positive three digit integer.");
-                valueForCompare1 = Convert.ToInt32(Console.ReadLine());
-            }
-
             // Loop for verifying correctly inputted variable of the first loop
             while (correctint)
             {
@@ -45,17 +35,8 @@ namespace SumThreeDigit
             // for string entry into ReadLine still only handles first exception
 
             correctint = true;
-            try
-            {
-                valueForCompare2 = Convert.ToInt32(Console.ReadLine());
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Invalid Entry. Please enter a positive three digit integer.");
-                valueForCompare2 = Convert.ToInt32(Console.ReadLine());
-            }
 
-            // Loop for verifying correctly inputted variable of the first loop
+            valueForCompare2 = Convert.ToInt32(Console.ReadLine());
 
             while (correctint)
             {
@@ -82,10 +63,8 @@ namespace SumThreeDigit
                 int hundredsPlaceSecondValue = LocationOfDigit(valueForCompare2, 100);
 
                 //tests for correct digit selection
-                //Console.WriteLine(onesPlaceFirstValue);
-                //Console.WriteLine(tensPlaceFirstValue);
-                // Console.WriteLine(hundredsPlaceFirstValue);
-
+                Console.WriteLine("The console found the three digits in the first value to be {0}, {1}, and {2}", onesPlaceFirstValue, tensPlaceFirstValue, hundredsPlaceFirstValue );
+                Console.WriteLine("The console found the three digits in the second value to be {0}, {1}, and {2}", onesPlaceSecondValue, tensPlaceSecondValue, hundredsPlaceSecondValue);
                 //Console.WriteLine(onesPlaceSecondValue);
                 //Console.WriteLine(tensPlaceSecondValue);
                 //Console.WriteLine(hundredsPlaceSecondValue);
@@ -94,19 +73,24 @@ namespace SumThreeDigit
                 int totalseconddigit = tensPlaceFirstValue + tensPlaceSecondValue;
                 int totalthirddigit = hundredsPlaceFirstValue + hundredsPlaceSecondValue;
 
-                bool sumsAreEqual;
+                SumComparison(totalfirstdigit, totalseconddigit, totalthirddigit);
 
-                if (totalfirstdigit == totalseconddigit && totalseconddigit == totalthirddigit)
-                {
-                    sumsAreEqual = true;
-                    Console.WriteLine(sumsAreEqual);
-                }
-                else
-                {
-                    sumsAreEqual = false;
-                    Console.WriteLine(sumsAreEqual);
-                }
             }
+        }
+        public static void SumComparison(int x, int y,int z)
+        {
+            bool sumsAreEqual;
+            if (x == y && y == z)
+            {
+                sumsAreEqual = true;
+                Console.WriteLine("True. The sum total of each digit place are all the same integer value.");
+            }
+            else
+            {
+                sumsAreEqual = false;
+                Console.WriteLine("False. The sum total of each digit place are not all the same integer value");
+            }
+
         }
         public static int LocationOfDigit(int newDigitValue, int place)
         {
