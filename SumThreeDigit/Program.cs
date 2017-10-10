@@ -65,39 +65,25 @@ namespace SumThreeDigit
             }
             Console.WriteLine("Value 2 = {0}", valueForCompare2);
             {
-                //pulling digits from the first value
-                int onesPlaceFirstValue = LocationOfDigit(valueForCompare1, 1);
-                int tensPlaceFirstValue = LocationOfDigit(valueForCompare1, 10);
-                int hundredsPlaceFirstValue = LocationOfDigit(valueForCompare1, 100);
+                int totalOnes = LocationOfDigit(valueForCompare1, 1) + LocationOfDigit(valueForCompare2, 1);
+                int totalTens = LocationOfDigit(valueForCompare1, 10) + LocationOfDigit(valueForCompare2, 10);
+                int totalHundreds = LocationOfDigit(valueForCompare1, 100) + LocationOfDigit(valueForCompare2, 100);
+                Console.WriteLine("The sum of each digit place is ones {0}, tens {1} and hundreds {2}", totalOnes, totalTens, totalHundreds);
 
-                int onesPlaceSecondValue = LocationOfDigit(valueForCompare2, 1);
-                int tensPlaceSecondValue = LocationOfDigit(valueForCompare2, 10);
-                int hundredsPlaceSecondValue = LocationOfDigit(valueForCompare2, 100);
-
-                //tests for correct digit selection
-                Console.WriteLine("The console found the three digits in the first value to be {2}, {1}, and {0}", onesPlaceFirstValue, tensPlaceFirstValue, hundredsPlaceFirstValue);
-                Console.WriteLine("The console found the three digits in the second value to be {2}, {1}, and {0}", onesPlaceSecondValue, tensPlaceSecondValue, hundredsPlaceSecondValue);
-
-                int totalfirstdigit = onesPlaceFirstValue + onesPlaceSecondValue;
-                int totalseconddigit = tensPlaceFirstValue + tensPlaceSecondValue;
-                int totalthirddigit = hundredsPlaceFirstValue + hundredsPlaceSecondValue;
-
-                SumComparison(totalfirstdigit, totalseconddigit, totalthirddigit);
+                SumComparison(totalOnes, totalTens, totalHundreds);
 
             }
         }
+        //checks the sums equality and prints the answer
         public static void SumComparison(int x, int y, int z)
         {
-            bool sumsAreEqual;
             if (x == y && y == z)
             {
-                sumsAreEqual = true;
-                Console.WriteLine("True. The sum total of each digit place are all the same integer value.");
+                Console.WriteLine("True. The sum totals of each digit place are all the same integer value.");
             }
             else
             {
-                sumsAreEqual = false;
-                Console.WriteLine("False. The sum total of each digit place are not all the same integer value");
+                Console.WriteLine("False. The sum totals of each digit place are not all the same integer value");
             }
 
         }
