@@ -103,22 +103,9 @@ namespace SumThreeDigit
         }
         public static int LocationOfDigit(int newDigitValue, int place)
         {
-            if (place == 1)
-            {
-                int desiredDigitPlace = newDigitValue % 10;
-                return desiredDigitPlace;
-            }
-            else if (place == 10)
-            {
-                int desiredDigitPlace = (newDigitValue / 10) % 10;
-                return desiredDigitPlace;
-            }
-            else
-            {
-                int desiredDigitValue = (newDigitValue / 100) % 10;
-                return desiredDigitValue;
-            }
-
+            int desiredDigitPlace = (newDigitValue / place) % 10;
+            return desiredDigitPlace;
         }
+
     }
 }
