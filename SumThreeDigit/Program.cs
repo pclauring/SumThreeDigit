@@ -38,10 +38,6 @@ namespace SumThreeDigit
 
             Console.WriteLine("Please enter your second positive three digit integer for comparison");
 
-            // for string entry into ReadLine still only handles first exception
-
-            correctint = true;
-
             //while loop with TryParse to find a value that can be converted into an int
             valueForCompare2 = 0;
             while (!int.TryParse(Console.ReadLine(), out valueForCompare2))
@@ -50,6 +46,7 @@ namespace SumThreeDigit
                 Console.WriteLine("Please enter a valid integer");
             }
 
+            correctint = true;
             while (correctint)
             {
                 if (valueForCompare2 >= 100 && valueForCompare2 <= 999)
