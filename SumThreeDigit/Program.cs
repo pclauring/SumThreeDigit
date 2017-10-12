@@ -21,15 +21,16 @@ namespace SumThreeDigit
                     Console.WriteLine("Please enter a valid integer");
                 }
 
-                // Convert integer to a string
+                // Convert integer to a string to select characters for summation
                 string valueString1 = Convert.ToString(valueForCompare1);
+
+                //visual verification of the inputs of user
                 Console.WriteLine("Integer Length : {0}", valueString1.Length);
 
-                Console.WriteLine("Value 1 = {0}", valueForCompare1);
+                Console.WriteLine("Value 1 : {0}", valueForCompare1);
 
                 Console.WriteLine("Please enter your second positive integer for comparison");
 
-                //while loop with TryParse to find a value that can be converted into an int
                 valueForCompare2 = 0;
                 while (!int.TryParse(Console.ReadLine(), out valueForCompare2))
                 {
@@ -37,12 +38,12 @@ namespace SumThreeDigit
                     Console.WriteLine("Please enter a valid integer");
                 }
 
-                // Convert integer to a string
                 string valueString2 = Convert.ToString(valueForCompare2);
+
                 Console.WriteLine("Integer Length : {0}", valueString1.Length);
+                Console.WriteLine("Value 2 : {0}", valueForCompare2);
 
-                Console.WriteLine("Value 2 = {0}", valueForCompare2);
-
+                //Checks to see if the integers are the same length before comparing the sums of digits
                 if (valueString1.Length == valueString2.Length)
                 {
                     digitsTheSame = false;
@@ -54,7 +55,8 @@ namespace SumThreeDigit
                 }
             }
         }
-        //checks the sums equality and prints the answer
+
+        //finds digit place and compares the sums returning a bool
         public static bool SumComparison(string x, string y)
         {
             int lengthofdigit = x.Length;
