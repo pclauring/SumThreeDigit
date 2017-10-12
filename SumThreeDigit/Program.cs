@@ -7,8 +7,8 @@ namespace SumThreeDigit
         static void Main(string[] args)
         {
             int valueForCompare1, valueForCompare2;
-            bool correctint = true;
-            Console.WriteLine("Please enter your first positive three digit integer for comparison");
+
+            Console.WriteLine("Please enter your first positive integer for comparison");
 
             //while loop with TryParse to find a value that can be converted into an int
             valueForCompare1 = 0;
@@ -18,25 +18,13 @@ namespace SumThreeDigit
                 Console.WriteLine("Please enter a valid integer");
             }
 
-            // Loop for verifying correctly inputted variable of the first loop
-            while (correctint)
-            {
-                if (valueForCompare1 >= 100 && valueForCompare1 <= 999)
-                {
-                    correctint = false;
-                    Console.WriteLine("Value accepted!");
-                }
-                else
-                {
-                    Console.WriteLine("Value not in range. Please enter a positive three digit integer for comparison");
-                    valueForCompare1 = Convert.ToInt32(Console.ReadLine());
-                }
-
-            }
+            // Convert integer to a string
+            string valueString1 = Convert.ToString(valueForCompare1);
+            Console.WriteLine("Integer Length : {0}", valueString1.Length);
 
             Console.WriteLine("Value 1 = {0}", valueForCompare1);
 
-            Console.WriteLine("Please enter your second positive three digit integer for comparison");
+            Console.WriteLine("Please enter your second positive integer for comparison");
 
             //while loop with TryParse to find a value that can be converted into an int
             valueForCompare2 = 0;
@@ -46,49 +34,35 @@ namespace SumThreeDigit
                 Console.WriteLine("Please enter a valid integer");
             }
 
-            correctint = true;
-            while (correctint)
-            {
-                if (valueForCompare2 >= 100 && valueForCompare2 <= 999)
-                {
-                    correctint = false;
-                    Console.WriteLine("Value accepted!");
-                }
-                else
-                {
-                    Console.WriteLine("Value not in range. Please enter a positive three digit integer for comparison");
-                    valueForCompare2 = Convert.ToInt32(Console.ReadLine());
-                }
-            }
+            // Convert integer to a string
+            string valueString2 = Convert.ToString(valueForCompare2);
+            Console.WriteLine("Integer Length : {0}", valueString1.Length);
+
             Console.WriteLine("Value 2 = {0}", valueForCompare2);
-            {
-                int totalOnes = LocationOfDigit(valueForCompare1, 1) + LocationOfDigit(valueForCompare2, 1);
-                int totalTens = LocationOfDigit(valueForCompare1, 10) + LocationOfDigit(valueForCompare2, 10);
-                int totalHundreds = LocationOfDigit(valueForCompare1, 100) + LocationOfDigit(valueForCompare2, 100);
-                Console.WriteLine("The sum of each digit place is ones {0}, tens {1} and hundreds {2}", totalOnes, totalTens, totalHundreds);
 
-                SumComparison(totalOnes, totalTens, totalHundreds);
-
-            }
-        }
-        //checks the sums equality and prints the answer
-        public static void SumComparison(int x, int y, int z)
-        {
-            if (x == y && y == z)
+            if (valueString1.Length == valueString2.Length)
             {
-                Console.WriteLine("True. The sum totals of each digit place are all the same integer value.");
+                Console.WriteLine(SumComparison(valueString1,valueString2));
             }
             else
             {
-                Console.WriteLine("False. The sum totals of each digit place are not all the same integer value");
+                Console.WriteLine("Strings are not the same length");
             }
 
         }
-        public static int LocationOfDigit(int newDigitValue, int place)
+        //checks the sums equality and prints the answer
+        public static bool SumComparison(string x, string y)
         {
-            int desiredDigitPlace = (newDigitValue / place) % 10;
-            return desiredDigitPlace;
+            int lengthofdigit = x.Length;
+            int sumDigit0 = x[0] + y[0];
+            for (int i = 1; i < lengthofdigit; i++)
+            {
+                if (sumDigit0 != (x[i] + y[i]))
+                {
+                    return false;
+                }
+            }
+                   return true;
+            }
         }
-
-    }
 }
