@@ -8,6 +8,8 @@ namespace SumThreeDigit
         {
             int valueForCompare1, valueForCompare2;
             bool digitsTheSame = true;
+
+            // while loop to repeat until the integers are of equal length
             while (digitsTheSame)
             {
                 digitsTheSame = true;
